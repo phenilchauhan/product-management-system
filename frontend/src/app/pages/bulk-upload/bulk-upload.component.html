@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>Bulk Upload Products</h3>
+  <input type="file" class="form-control mb-3" (change)="onFileSelected($event)" accept=".csv">
+
+  <div *ngIf="uploading" class="progress mb-3">
+    <div class="progress-bar" role="progressbar" [style.width.%]="progress">{{progress}}%</div>
+  </div>
+</div>

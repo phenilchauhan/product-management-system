@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>{{ editMode ? 'Edit Product' : 'Add Product' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <div class="mb-3">
+      <label>Category</label>
+      <select class="form-select" formControlName="categoryId">
+        <option [ngValue]="null">Select Category</option>
+        <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Image</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)">
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="loading">{{ editMode ? 'Update' : 'Add' }}</button>
+  </form>
+</div>

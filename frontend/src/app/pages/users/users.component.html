@@ -1,0 +1,38 @@
+<div class="container">
+  <h3>Users</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mb-3">
+    <div class="row g-2">
+      <div class="col-md-5">
+        <input type="email" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+      <div class="col-md-4">
+        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" type="submit">{{ editMode ? 'Update' : 'Add' }}</button>
+        <button *ngIf="editMode" class="btn btn-secondary ms-2" type="button" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{u.id}}</td>
+        <td>{{u.email}}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary me-2" (click)="editUser(u)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(u.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <h3>Categories</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mb-3">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Category Name" formControlName="name">
+      <button class="btn btn-primary" type="submit">{{ editMode ? 'Update' : 'Add' }}</button>
+      <button *ngIf="editMode" class="btn btn-secondary ms-2" type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>UniqueID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categories">
+        <td>{{c.uniqueId}}</td>
+        <td>{{c.name}}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary me-2" (click)="editCategory(c)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(c.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

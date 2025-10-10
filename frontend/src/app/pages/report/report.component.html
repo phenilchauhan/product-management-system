@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Download Product Report</h3>
+  <button class="btn btn-primary me-2" [disabled]="downloading" (click)="download('csv')">
+    Download CSV
+  </button>
+  <button class="btn btn-success" [disabled]="downloading" (click)="download('xlsx')">
+    Download XLSX
+  </button>
+  <div *ngIf="downloading" class="mt-2">Downloading...</div>
+</div>
